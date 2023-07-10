@@ -15,7 +15,7 @@
     <string name="zeros">00</string>
     <string name="zero">0</string>
     <string name="point">,</string>
-    <string name="delete">C</string>
+    <string name="clear">C</string>
     <string name="percentage">%</string>
     <string name="delete_last_symbol"><![CDATA[<-]]></string>
     <string name="divide">/</string>

@@ -2,24 +2,27 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relative_layout"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/analogous_dark_pink"
     android:orientation="horizontal"
     tools:context=".MainActivity">
 
+
     <TextView
+        android:id="@+id/tv_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:gravity="start"
+        android:maxLines="4"
+        android:textColor="@color/additional_light_grey"
         android:textSize="42sp"
-        tools:text="Hello comrad"
-        android:textColor="@color/additional_light_grey"/>
+        tools:text="Hello comrad" />
 
     <LinearLayout
         android:id="@+id/all_buttons_layout"
@@ -36,40 +39,44 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btn_clear"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_green_button"
-                android:text="@string/delete"
+                android:text="@string/clear"
                 android:textColor="@color/additional_light_grey"
                 android:textSize="28sp" />
 
             <Button
+                android:id="@+id/btn_percentage"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_green_button"
                 android:text="@string/percentage"
                 android:textColor="@color/additional_light_grey"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
             <Button
+                android:id="@+id/btn_delete_last"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_green_button"
                 android:text="@string/delete_last_symbol"
                 android:textColor="@color/additional_light_grey"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
             <Button
+                android:id="@+id/btn_divide"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_green_button"
                 android:text="@string/divide"
                 android:textColor="@color/additional_light_grey"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
         </LinearLayout>
 
@@ -80,6 +87,7 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btn_one"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
@@ -89,31 +97,34 @@
                 android:textSize="28sp" />
 
             <Button
+                android:id="@+id/btn_two"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_grey_button"
                 android:text="@string/two"
                 android:textColor="@color/additional_light_grey"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
             <Button
+                android:id="@+id/btn_three"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_grey_button"
                 android:text="@string/three"
                 android:textColor="@color/additional_light_grey"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
             <Button
+                android:id="@+id/btn_multiply"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_green_button"
                 android:text="@string/multiply"
                 android:textColor="@color/additional_light_grey"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
         </LinearLayout>
 
@@ -124,40 +135,44 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btn_four"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_grey_button"
                 android:text="@string/four"
                 android:textColor="@color/additional_light_grey"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
             <Button
+                android:id="@+id/btn_five"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_grey_button"
                 android:text="@string/five"
                 android:textColor="@color/additional_light_grey"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
             <Button
+                android:id="@+id/btn_six"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_grey_button"
                 android:text="@string/six"
                 android:textColor="@color/additional_light_grey"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
             <Button
+                android:id="@+id/btn_minus"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_green_button"
                 android:text="@string/minus"
                 android:textColor="@color/additional_light_grey"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
         </LinearLayout>
 
@@ -168,40 +183,44 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btn_seven"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_grey_button"
                 android:text="@string/seven"
                 android:textColor="@color/additional_light_grey"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
             <Button
+                android:id="@+id/btn_eight"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_grey_button"
                 android:text="@string/eight"
                 android:textColor="@color/additional_light_grey"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
             <Button
+                android:id="@+id/btn_nine"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_grey_button"
                 android:text="@string/nine"
                 android:textColor="@color/additional_light_grey"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
             <Button
+                android:id="@+id/btn_plus"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_green_button"
                 android:text="@string/plus"
                 android:textColor="@color/additional_light_grey"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
         </LinearLayout>
 
@@ -212,33 +231,37 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btn_two_zeros"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_grey_button"
                 android:text="@string/zeros"
                 android:textColor="@color/additional_light_grey"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
             <Button
+                android:id="@+id/btn_zero"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_grey_button"
                 android:text="@string/zero"
                 android:textColor="@color/additional_light_grey"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
             <Button
+                android:id="@+id/btn_point"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
                 android:background="@drawable/round_dark_grey_button"
                 android:text="@string/point"
                 android:textColor="@color/additional_light_grey"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
             <Button
+                android:id="@+id/btn_equals"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_margin="12dp"
