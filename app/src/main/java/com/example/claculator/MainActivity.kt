@@ -16,10 +16,6 @@ class MainActivity : ComponentActivity() {
 
         val clickListeners = ClickListeners()
 
-        // Вид
-//        if (binding.tvResult.toString().length > 30)
-//            binding.tvResult.textSize = 32.0F
-
         // Операции
         clickListeners.clear(binding.btnClear, binding.tvResult)
         clickListeners.delete(binding.btnDeleteLast, binding.tvResult)
@@ -27,10 +23,11 @@ class MainActivity : ComponentActivity() {
         clickListeners.addOperator(binding.btnMinus, binding.tvResult, '-')
         clickListeners.addOperator(binding.btnMultiply, binding.tvResult, '*')
         clickListeners.addOperator(binding.btnDivide, binding.tvResult, '/')
+        clickListeners.calculate(binding.btnEquals, binding.tvResult)
         //clickListeners.addOperator(binding.btnPercentage, binding.tvResult, '%')
 
         // Цифры
-        clickListeners.addZero(binding.btnZero, binding.tvResult) // 0
+        clickListeners.addZero(binding.btnZero, binding.tvResult, "0") // 0
         clickListeners.addDigit(binding.btnOne, binding.tvResult, '1')
         clickListeners.addDigit(binding.btnTwo, binding.tvResult, '2')
         clickListeners.addDigit(binding.btnThree, binding.tvResult, '3')
@@ -41,6 +38,6 @@ class MainActivity : ComponentActivity() {
         clickListeners.addDigit(binding.btnEight, binding.tvResult, '8')
         clickListeners.addDigit(binding.btnNine, binding.tvResult, '9')
         clickListeners.addPoint(binding.btnPoint, binding.tvResult) // .
-        clickListeners.addTwoZeros(binding.btnTwoZeros, binding.tvResult) // 00
+        clickListeners.addZero(binding.btnTwoZeros, binding.tvResult, "00") // 00
     }
 }
