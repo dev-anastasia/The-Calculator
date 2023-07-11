@@ -2,9 +2,9 @@ package com.example.claculator.ui.theme
 
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 
 class ClickListeners {
-    // добавить отрицательные числа, если получится (оператор - в начале)
 
     private var first_number = ""
     private var operator = ""
@@ -12,7 +12,7 @@ class ClickListeners {
     private var result = ""
 
     var pointAllowance = true // в строку можно добавить 0 или 00
-    var readyToClear = false // если true - все данные готовы к очистке
+    var readyToClear = false // если true - все данные (в т.ч. на экране) готовы к очистке
 
     fun addDigit(btn: Button, tv: TextView, c: Char) {
         btn.setOnClickListener {
@@ -37,35 +37,39 @@ class ClickListeners {
                 tv.text = ""
                 readyToClear = false
             }
-            if (tv.text.toString().isEmpty()) // добавить ОТРИЦАТЕЛЬНЫЕ ЧИСЛА
+            // если строка пустая:
+            if (tv.text.toString().isEmpty() && c != "-")
                 return@setOnClickListener
-            else { // если строка не пустая
-                if (tv.text.last().toString() == operator) {
-                    tv.text = tv.text.dropLast(1).toString() + c
-                    setOperator(c)
+            if (tv.text.toString().isEmpty() && c == "-") {
+                tv.text = "" + c
+                return@setOnClickListener
+            } else {
+                if (tv.text.length == 1 && tv.text.last() == '-') {
                     return@setOnClickListener
-                }
-                if (tv.text.toString().contains('+') ||
-                    tv.text.toString().contains('-') || // отрицат.числа
-                    tv.text.toString().contains('*') ||
-                    tv.text.toString().contains('/')
-                )
-                    return@setOnClickListener
-                else {
-                    if (!tv.text.toString().last().isDigit() && tv.text.toString().last() != '%') {
+                } else {
+                    if (tv.text.last().toString() == operator &&
+                        tv.text.length != 1
+                    ) { // замена оператора
                         tv.text = tv.text.dropLast(1).toString() + c
-                        pointAllowance = true
                         setOperator(c)
                     } else {
-                        if (tv.text.toString().last() != '%') {
-                            first_number = tv.text.toString()
-                            tv.text = tv.text.toString() + c
+                        if (!tv.text.toString().last().isDigit() &&
+                            tv.text.toString().last() != '%'
+                        ) {
+                            tv.text = tv.text.dropLast(1).toString() + c
                             pointAllowance = true
                             setOperator(c)
                         } else {
-                            tv.text = tv.text.toString() + c
-                            pointAllowance = true
-                            setOperator(c)
+                            if (tv.text.toString().last() != '%') {
+                                first_number = tv.text.toString()
+                                tv.text = tv.text.toString() + c
+                                pointAllowance = true
+                                setOperator(c)
+                            } else {
+                                tv.text = tv.text.toString() + c
+                                pointAllowance = true
+                                setOperator(c)
+                            }
                         }
                     }
                 }
@@ -73,7 +77,7 @@ class ClickListeners {
         }
     }
 
-    // Метод для добавления НУЛЯ и ДВУХ НУЛЕЙ
+    // Метод для добавления нуля и двух нулей
     fun addZero(btn: Button, tv: TextView, c: String) {
         btn.setOnClickListener {
             if (readyToClear) {
@@ -93,7 +97,8 @@ class ClickListeners {
                     }
                     if (tv.text.toString().last() == '0') { // последний был нулём
                         val length = tv.text.length
-                        if (tv.text.toString().get(length - 2) == '+' || // перед нулём был оператор (т.е. началось новое число)
+                        if (tv.text.toString()
+                                .get(length - 2) == '+' || // перед нулём был оператор (т.е. началось новое число)
                             tv.text.toString().get(length - 2) == '-' ||
                             tv.text.toString().get(length - 2) == '*' ||
                             tv.text.toString().get(length - 2) == '/' ||
@@ -115,8 +120,7 @@ class ClickListeners {
                             ) {
                                 tv.text = tv.text.toString() + '0'
                                 return@setOnClickListener
-                            }
-                            else {
+                            } else {
                                 tv.text = tv.text.toString() + c
                                 return@setOnClickListener
                             }
@@ -128,6 +132,7 @@ class ClickListeners {
         }
     }
 
+    // Метод для добавления точки
     fun addPoint(btn: Button, tv: TextView) { // ГОТОВО
         btn.setOnClickListener {
             if (readyToClear) {
@@ -144,6 +149,7 @@ class ClickListeners {
         }
     }
 
+    // Метод удаления всех данных (в т.ч. очищения данных в интерфейсе)
     fun clear(btn: Button, tv: TextView) {
         btn.setOnClickListener {
             tv.text = ""
@@ -152,6 +158,7 @@ class ClickListeners {
         }
     }
 
+    // Метод удаления последнего символа
     fun delete(btn: Button, tv: TextView) {
         btn.setOnClickListener {
             if (tv.text.toString().isEmpty())
@@ -161,7 +168,8 @@ class ClickListeners {
                     if (second_number.isEmpty()) // удаляем данные о первом числе
                         first_number = ""
                     if (second_number.isNotEmpty())
-                        second_number = "" // очищаем только данные о втором числе, оно посчитается заново потом
+                        second_number =
+                            "" // очищаем только данные о втором числе, оно посчитается заново потом
                 }
                 if (tv.text.toString().last() == '.')
                     pointAllowance = true
@@ -178,6 +186,8 @@ class ClickListeners {
                 if (operator.isEmpty()) { // если введено только одно число (или одно число с %)
                     if (first_number.endsWith(".0"))
                         tv.text = first_number.toDouble().toInt().toString()
+                    if (first_number.isEmpty())
+                        return@setOnClickListener
                     else
                         tv.text = first_number
                 } else { // если есть два числа и оператор
@@ -207,6 +217,8 @@ class ClickListeners {
                                     (first_number.toDouble() / second_number.toDouble()).toString()
                             else {
                                 tv.text = "Делить на 0 нельзя!"
+                                clearInnerData()
+                                readyToClear = true
                                 return@setOnClickListener
                             }
                         }
@@ -214,10 +226,12 @@ class ClickListeners {
                     if (result.endsWith(".0")) {
                         tv.text = result.toDouble().toInt().toString()
                         clearInnerData()
+                        pointAllowance = true
                         readyToClear = true
                     } else {
                         tv.text = result
                         clearInnerData()
+                        pointAllowance = true
                         readyToClear = true
                     }
                 }
@@ -234,7 +248,8 @@ class ClickListeners {
             if (tv.text.isEmpty() ||
                 tv.text.last().toString() == operator ||
                 tv.text.last() == '%' ||
-                tv.text.last() == '.'
+                tv.text.last() == '.' ||
+                tv.text.last() == '-'
             )
                 return@setOnClickListener
             else {
@@ -255,8 +270,7 @@ class ClickListeners {
         }
     }
 
-
-    private fun setOperator(c: String) {
+    private fun setOperator(c: String) { // добавляет значение оператора (+,-,*,/) в поле класса
         operator = c
     }
 
@@ -266,5 +280,4 @@ class ClickListeners {
         operator = ""
         result = ""
     }
-
 }
