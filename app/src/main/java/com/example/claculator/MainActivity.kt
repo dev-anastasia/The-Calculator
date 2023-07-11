@@ -19,12 +19,12 @@ class MainActivity : ComponentActivity() {
         // Операции
         clickListeners.clear(binding.btnClear, binding.tvResult)
         clickListeners.delete(binding.btnDeleteLast, binding.tvResult)
-        clickListeners.addOperator(binding.btnPlus, binding.tvResult, '+')
-        clickListeners.addOperator(binding.btnMinus, binding.tvResult, '-')
-        clickListeners.addOperator(binding.btnMultiply, binding.tvResult, '*')
-        clickListeners.addOperator(binding.btnDivide, binding.tvResult, '/')
+        clickListeners.addOperator(binding.btnPlus, binding.tvResult, "+")
+        clickListeners.addOperator(binding.btnMinus, binding.tvResult, "-")
+        clickListeners.addOperator(binding.btnMultiply, binding.tvResult, "*")
+        clickListeners.addOperator(binding.btnDivide, binding.tvResult, "/")
         clickListeners.calculate(binding.btnEquals, binding.tvResult)
-        //clickListeners.addOperator(binding.btnPercentage, binding.tvResult, '%')
+        clickListeners.addPercentage(binding.btnPercentage, binding.tvResult)
 
         // Цифры
         clickListeners.addZero(binding.btnZero, binding.tvResult, "0") // 0
