@@ -39,5 +39,6 @@ class MainActivity : ComponentActivity() {
         clickListeners.addDigit(binding.btnNine, binding.tvResult, '9')
         clickListeners.addPoint(binding.btnPoint, binding.tvResult) // .
         clickListeners.addZero(binding.btnTwoZeros, binding.tvResult, "00") // 00
+
     }
 }
